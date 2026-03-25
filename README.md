@@ -130,7 +130,7 @@ if __name__ == "__main__":
  ````
 # código 3:# Calculadora Simples em Python
 ````
-
+````python
 # Autor: Programador Renomado
 # Linguagem: Python 3
 
