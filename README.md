@@ -4,9 +4,18 @@
 
 
 O prompt mestre inicial que você utilizou.
+
+
 variação 1:crie uma calculadora e deixe tudo em markdown ate o código.
+
+
 variação 2:caso você fosse um programador e esta criando uma calculadora em python coloque tudo em markdown ate o código. 
-variação 3:você e um programador renomado e esta criando um código de calculadora utilizando a linguagem de python coloque tudo em markdown ate o código. 
+
+
+variação 3:você e um programador renomado e esta criando um código de calculadora utilizando a linguagem de python coloque tudo em
+markdown ate o código.
+
+
 
 # código 1:# Calculadora Simples em Python
 
