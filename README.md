@@ -65,7 +65,7 @@ elif opcao == "4":
     print("Resultado:", divisao(num1, num2))
 else:
     print("Opção inválida")
-
+```
 # código 2:# Calculadora em Python
 
 ```python
@@ -127,8 +127,10 @@ def calculadora():
 # Executa a calculadora
 if __name__ == "__main__":
     calculadora()
- 
+ ````
 # código 3:# Calculadora Simples em Python
+````
+
 # Autor: Programador Renomado
 # Linguagem: Python 3
 
@@ -190,7 +192,7 @@ def calculadora():
 if __name__ == "__main__":
     calculadora()
 
-
+````
  
 As respostas geradas pelo LLM para cada versão: CHAT GPT
 
