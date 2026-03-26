@@ -1,0 +1,5 @@
+MISSÃO 01:
+>
+1. Crie um prompt simples agora.
+> 2. Compartilhe o resultado no Readme do repositório da disciplina.
+"Um bom prompt não é apenas uma instrução, é uma ponte entre a criatividade humana e o poder da inteligência artificial."
