@@ -1,13 +1,6 @@
-# jklajkfklalçjdkljfakdfjlajdka
-khjfhahjdha
+# MISSÃO 01:
 
 
-adhfakljdhf
+> 1. Crie um prompt simples agora.
 
-
-hadjfhajhdf
-
-
-hdjfhajhdf
-
-
+> 2. Compartilhe o resultado no Readme do repositório da disciplina.
