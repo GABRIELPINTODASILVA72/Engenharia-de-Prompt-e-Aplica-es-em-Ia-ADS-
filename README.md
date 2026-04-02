@@ -200,7 +200,7 @@ if __name__ == "__main__":
 
 Uma reflexão crítica (5–10 linhas) sobre:
 
-
+**trazendo um prompt bom com persona + comtexto + restrições + formato, traz a melhor compreenção da llm, trazendo um resultado direto onde o usuario quer sem ter que perguntar novamente, pois, a maioria das pessoas nao sabem criar um bom prompt, a maioria das pessoas criam um prompt vago sem muita informação fazendo com que a llm possa proporcionar informações falsa sem existencia delas por "interpretar" errado o prompt. A versão ultilizado foi o "CHAT GPT" por ser mais familiarizado, mas poderi ser usado qualque outra, mas sempre usando o prompt correto e certo do asunto. A melhor versão foi a com o prompt remasterizado, porque traz mais imformações e a llm entende melhor sem trazer assuntos falsos.** 
 
 Como diferentes instruções mudaram a resposta.
 Qual versão foi mais útil para o aprendizado.
