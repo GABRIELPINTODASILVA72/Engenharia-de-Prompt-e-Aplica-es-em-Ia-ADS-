@@ -11,7 +11,7 @@ Perfeito! Vamos criar um código em Python que faça tudo isso: adicionar notas 
 
 Aqui está um exemplo completo e comentado:
 ```python
-# Lista para armazenar os alunos e suas notas
+# Lista para armazenar alunos
 alunos = []
 
 while True:
@@ -20,32 +20,38 @@ while True:
         break
 
     notas = []
-    while True:
-        nota_input = input(f"Digite a nota de {nome} (ou 'fim' para parar): ")
+    for i in range(6):
+        nota_input = input(f"Digite a nota {i+1} de {nome} (ou 'fim' para parar): ")
         if nota_input.lower() == 'fim':
             break
-        # Substituir vírgula por ponto e converter para float
         try:
             nota = float(nota_input.replace(',', '.'))
             if 0 <= nota <= 10:
                 notas.append(nota)
+                # Calcula média imediata
+                media_atual = sum(notas) / len(notas)
+                situacao_atual = "Aprovado" if media_atual >= 6 else "Reprovado"
+                print(f"Média atual de {nome}: {media_atual:.2f} | Situação: {situacao_atual}")
             else:
-                print("Nota inválida. Digite um valor entre 0 e 10.")
+                print("Nota inválida! Digite entre 0 e 10.")
         except ValueError:
-            print("Entrada inválida. Digite um número válido.")
+            print("Entrada inválida! Digite um número.")
 
-    if notas:  # só adiciona se tiver pelo menos uma nota
-        media = sum(notas) / len(notas)
-        situacao = "Aprovado" if media >= 6 else "Reprovado"
-        alunos.append({"nome": nome, "notas": notas, "media": media, "situacao": situacao})
+    if notas:
+        # Calcula média final do aluno
+        media_final = sum(notas) / len(notas)
+        situacao_final = "Aprovado" if media_final >= 6 else "Reprovado"
+        alunos.append({"nome": nome, "notas": notas, "media": media_final, "situacao": situacao_final})
+    else:
+        print(f"Nenhuma nota adicionada para {nome}.")
 
-# Exibir resultados
+# Exibir resultados finais
 print("\n--- RESULTADOS DOS ALUNOS ---")
 for aluno in alunos:
     notas_formatadas = [f"{nota:.1f}" for nota in aluno['notas']]
     print(f"{aluno['nome']}: Notas: {notas_formatadas} | Média: {aluno['media']:.2f} | Situação: {aluno['situacao']}")
 
-# Calcular média da escola
+# Média da escola
 if alunos:
     media_escola = sum(aluno['media'] for aluno in alunos) / len(alunos)
     print(f"\nMédia da escola: {media_escola:.2f}")
