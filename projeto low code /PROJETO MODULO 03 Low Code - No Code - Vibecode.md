@@ -23,6 +23,11 @@
 
 <img width="599" height="1069" alt="Captura de tela 2026-05-20 152133" src="https://github.com/user-attachments/assets/de5f7e80-2744-4366-8f90-5478d1f1cb15" />
 
+# **TELA QUE A RESERVA FOI BEM SUCEDIDA**
+
+<img width="594" height="538" alt="Captura de tela 2026-05-20 154117" src="https://github.com/user-attachments/assets/b2657d10-2ad7-4dc8-9cf3-c5531671e5ad" />
+
+
 
 # BREVE EXPLICAÇÃO DO PROJETO 
 
@@ -55,7 +60,7 @@ https://docs.google.com/document/d/1w3z-mvUGJVIN6uouFmfs1sqFuxSxqPssvf4nSpL2jOU/
 
 2- IA COM LIMITE DE PERGUNTAS: não podia faz muitas perguntas, se não acabava o teste gratis.
 
-3- 
+3- ELE PEDIA PARA EU ADICIONAR UM CODIGO AO MEU CODIGO: em vez dele adicionar o codigo que eu pedir no no codigo original ele pedia para que eu colocace manualmente o codigo que ele criou para o codigo do site original.
 
 
 # REFLEXÃO CRÍTICA
@@ -65,11 +70,13 @@ https://docs.google.com/document/d/1w3z-mvUGJVIN6uouFmfs1sqFuxSxqPssvf4nSpL2jOU/
 
 # PROXIMOS PASSOS
 
-1- ADICIONAR PAGAMENTOO 
+1- ADICIONAR PAGAMENTO.
 
-2- 
+2- MELHORAR O CALENDARIO, APENAS ESCOLHER DATAS QUE AINDA NAO FORAM FECHADAS.
 
+3- ADICIONAR UM CHAT PARA CONVERSA DIRETO COM O DONO DO ALUGUEL.
 
+4- ADICIONAR UM LOCAL PARA AS FOTOS DO ESPAÇO.
 
 
 
