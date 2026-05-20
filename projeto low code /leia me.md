@@ -2,25 +2,56 @@
 
 ## 📌 Desafio Escolhido
 
-Descreva aqui o desafio proposto pelo grupo (ex.: cadastro de usuários, automação de envio de e-mails, integração com API de IA).
+NOME DO DESAFIO: AUTOMAÇÃO DE RESERVA DE ALUGUEL
 
 ---
 
 ## 🖥️ Protótipo
 
-- Prints das telas ou link para a aplicação criada.
+**TELA INICIAL, COMTENDO AS REGRAS**
 
-- Breve explicação de como o protótipo funciona.
 
-> Coloque os arquivos de imagem ou PDF na pasta `/docs`.
+<img width="601" height="1060" alt="Captura de tela 2026-05-20 151812" src="https://github.com/user-attachments/assets/e5b02d6e-6c69-4993-8d0d-0df6256b9b47" />
+
+
+# **TELA PARA DIFINIR DATA E HORA**
+
+
+<img width="597" height="844" alt="Captura de tela 2026-05-20 151832" src="https://github.com/user-attachments/assets/04c951a8-5803-4be3-a3d3-09d5f8273b6f" />
+
+# **TELA PARA O PREENCHIMENTO DOS DADOS PESSOAIS**
+
+<img width="595" height="767" alt="Captura de tela 2026-05-20 152004" src="https://github.com/user-attachments/assets/3685d730-ea8b-40d5-a83a-92001b3e0baa" />
+
+
+# **TELA PARA COMFIRMAR OS DADOS DA RESERVA**
+
+
+<img width="599" height="1069" alt="Captura de tela 2026-05-20 152133" src="https://github.com/user-attachments/assets/de5f7e80-2744-4366-8f90-5478d1f1cb15" />
+
+# **TELA QUE A RESERVA FOI BEM SUCEDIDA**
+
+<img width="594" height="538" alt="Captura de tela 2026-05-20 154117" src="https://github.com/user-attachments/assets/b2657d10-2ad7-4dc8-9cf3-c5531671e5ad" />
+
+
+# BREVE EXPLICAÇÃO DO PROJETO 
+
+  O projeto tem como obijetivo auxiliar na reserva de alugueis, Facilitando o cliente e o dono do local, sem a necessidade o cliente entra em contato e marcar , com o site e preciso apenas o cliente escolher a data e horario e preencher os campos obrigatorios como nome, telefone e email. 
+
+
+LINK PARA IMAGEMS NO DOCS.
+
+https://docs.google.com/document/d/1w3z-mvUGJVIN6uouFmfs1sqFuxSxqPssvf4nSpL2jOU/edit?usp=drive_link
 
 ---
 
 ## ⚙️ Plataforma Utilizada
 
-- Nome da plataforma (ex.: Bubble, Make, Pipedream).
+# SITE ULTILIZADO
 
-- Justificativa da escolha: por que essa ferramenta foi selecionada para o desafio?
+- Eu ultilizei o CHAT GPT para criar tudo, toda a parte de css html foi com o CHAT GPT.
+
+- Eu ultilizei ele por que ele era o a llm que eu tenho mais familiaridade, e por ser mais acertivo no que eu peço.
 
 ---
 
@@ -28,11 +59,12 @@ Descreva aqui o desafio proposto pelo grupo (ex.: cadastro de usuários, automa�
 
 Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code/vibecode:
 
-1. Protótipo rápido
+1- PROTÓTIPO RÁPIDO: com o primeiro prompt ele criou quase tudo. 
 
-2. Integração simples
+2- PARECIDO COM O QUE FOI PEDIDO: ele criou um prototipo bem aparecido com o que foi pedido no prompt.
 
-3. Automação de processos
+3- NÃO COLOCOU COISAS A MAIS: ele nao adicionou coisas que eu nao tinha colocado no prompt.
+
 
 ---
 
@@ -40,23 +72,24 @@ Liste pelo menos **3 vantagens** percebidas no uso da abordagem low code/no code
 
 Liste pelo menos **3 limitações** percebidas:
 
-1. Customização limitada
+1- PEDIR PARA ADICIONAR ALGO: quando pedido para adidcionar algo ele modificava o codigo que nao foi pedido.
 
-2. Dependência da plataforma
+2- IA COM LIMITE DE PERGUNTAS: não podia faz muitas perguntas, se não acabava o teste gratis.
 
-3. Risco de lock-in tecnológico
+3- ELE PEDIA PARA EU ADICIONAR UM CODIGO AO MEU CODIGO: em vez dele adicionar o codigo que eu pedir no no codigo original ele pedia para que eu colocace manualmente o codigo que ele criou para o codigo do site original.
 
 ---
 
 ## 📚 Reflexão Crítica
 
-Explique como o grupo lidou com as limitações e quais soluções criativas foram propostas para contorná-las.
+  tive algumas limitações como limite de perguntas, porém era muito facil de resolver, apenas entrando em outra gia resolvia o problema de limite e com a mudanca de codigo quando era pedido para adicionar algo, eu apemas repetia o pedido e mudando um pouco o prompt, ate que ele chegue em uma versão que me agrade.
+
 
 ---
 
 ## 👥 Colaboração
 
-Descreva como o grupo organizou as tarefas e responsabilidades entre os integrantes.
+Gabriel pinto da silva
 
 ---
 
@@ -74,6 +107,10 @@ Professor(a): Kadidja Valéria
 
 ## 🚀 Próximos Passos
 
-- Melhorias sugeridas para o protótipo.
+1- ADICIONAR PAGAMENTO.
 
-- Possíveis evoluções para o Projeto Final da Unidade 3.
+2- MELHORAR O CALENDARIO, APENAS ESCOLHER DATAS QUE AINDA NAO FORAM FECHADAS.
+
+3- ADICIONAR UM CHAT PARA CONVERSA DIRETO COM O DONO DO ALUGUEL.
+
+4- ADICIONAR UM LOCAL PARA AS FOTOS DO ESPAÇO.
