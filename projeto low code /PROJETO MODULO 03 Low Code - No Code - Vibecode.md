@@ -4,7 +4,7 @@
 
 # BREVE EXPLICAÇÃO DO PROJETO 
 
-  O projeto tem como obijetivo auxiliar na reserva de alugueis, Facilitando o cliente e o dono do local, sem a necessidade o cliente entra em contato e marcar , com o site e preciso apenas o cliente escolher a data e horario e preencher os campos obrigatorios como nome, telefone e email. 
+  O projeto tem como objetivo auxiliar na reserva de alugueis, Facilitando o cliente e o dono do local, sem a necessidade o cliente entra em contato e marcar, com o site e preciso apenas o cliente escolher a data e horario e preencher os campos obrigatorios como nome, telefone e email. 
 
 
 **TELA INICIAL, COMTENDO AS REGRAS**
