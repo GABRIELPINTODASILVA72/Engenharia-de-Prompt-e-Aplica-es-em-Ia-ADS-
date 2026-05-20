@@ -1,0 +1,1382 @@
+
+<a href="pagina2.html">Reserva de aluguel 2</a>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Espaço - Sistema Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #BF00FF;
+            --primary-rgb: 191, 0, 255;
+            --light-bg: #f5f5f5;
+            --border-color: #ddd;
+            --text-color: #333;
+            --text-light: #666;
+            --shadow: 0 2px 8px rgba(191, 0, 255, 0.15);
+            --shadow-lg: 0 4px 16px rgba(191, 0, 255, 0.25);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #BF00FF 0%, #7B00CC 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #BF00FF, #7B00CC);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 20px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                padding: 40px;
+            }
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        .pricing-section h2 {
+            color: #BF00FF;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #BF00FF;
+            padding-bottom: 10px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.1), rgba(123, 0, 204, 0.1));
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #BF00FF;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 2px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: #BF00FF;
+        }
+
+        .pricing-card h3 {
+            color: #BF00FF;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            color: #BF00FF;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .pricing-card .description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-step {
+            animation: slideIn 0.4s ease-in;
+        }
+
+        .form-step.hidden {
+            display: none;
+        }
+
+        .form-step h2 {
+            color: #BF00FF;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            border-bottom: 3px solid #BF00FF;
+            padding-bottom: 10px;
+        }
+
+        /* Rules Container */
+        .rules-container {
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.05), rgba(123, 0, 204, 0.05));
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #BF00FF;
+            border: 2px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .rules-container h3 {
+            margin-bottom: 20px;
+            color: #BF00FF;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .rules-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(191, 0, 255, 0.1);
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+
+        .rules-list strong {
+            color: #BF00FF;
+            font-weight: 600;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #BF00FF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group input[type="time"] {
+            padding: 12px 15px;
+            border: 2px solid rgba(191, 0, 255, 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+            background-color: #fafafa;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="date"]:focus,
+        .form-group input[type="time"]:focus {
+            outline: none;
+            border-color: #BF00FF;
+            box-shadow: 0 0 0 3px rgba(191, 0, 255, 0.1);
+            background-color: white;
+        }
+
+        .form-group input[type="text"]:disabled,
+        .form-group input[type="tel"]:disabled,
+        .form-group input[type="email"]:disabled,
+        .form-group input[type="date"]:disabled,
+        .form-group input[type="time"]:disabled {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+            color: #999;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #BF00FF;
+        }
+
+        .info-text {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .error-message {
+            color: #ff1744;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Checkbox Container */
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.05), rgba(123, 0, 204, 0.05));
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #BF00FF;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            font-weight: 400;
+            color: var(--text-color);
+            cursor: pointer;
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: none;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background-color: #BF00FF;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background-color: #9500CC;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background-color: #7B00CC;
+            color: white;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #5A0099;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: #BF00FF;
+            color: white;
+        }
+
+        .btn-success:hover:not(:disabled) {
+            background-color: #9500CC;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 14px 32px;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Buttons */
+        .navigation-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .navigation-buttons .btn {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        @media (max-width: 480px) {
+            .navigation-buttons {
+                flex-direction: column;
+            }
+
+            .navigation-buttons .btn {
+                width: 100%;
+            }
+        }
+
+        /* Review Section */
+        .review-container {
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.08), rgba(123, 0, 204, 0.08));
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .review-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .review-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .review-section h3 {
+            color: #BF00FF;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .review-section p {
+            margin: 10px 0;
+            color: var(--text-color);
+        }
+
+        .review-section strong {
+            color: #BF00FF;
+            font-weight: 600;
+        }
+
+        .price-breakdown {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid rgba(191, 0, 255, 0.15);
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(191, 0, 255, 0.1);
+            color: var(--text-color);
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .price-item-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #BF00FF;
+            border-top: 2px solid #BF00FF;
+            margin-top: 10px;
+        }
+
+        /* Confirmation Checkbox */
+        .confirmation-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.1), rgba(123, 0, 204, 0.1));
+            border-radius: 8px;
+            border-left: 4px solid #BF00FF;
+            border: 2px solid rgba(191, 0, 255, 0.3);
+        }
+
+        .confirmation-checkbox input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #BF00FF;
+        }
+
+        .confirmation-checkbox label {
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            display: block;
+        }
+
+        /* Success Section */
+        .success-section {
+            animation: slideIn 0.4s ease-in;
+        }
+
+        .success-section.hidden {
+            display: none;
+        }
+
+        .success-container {
+            background: linear-gradient(135deg, rgba(191, 0, 255, 0.1), rgba(123, 0, 204, 0.1));
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 5px solid #BF00FF;
+            border: 2px solid rgba(191, 0, 255, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .success-container {
+                padding: 60px 40px;
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #BF00FF;
+            margin-bottom: 20px;
+            animation: scaleIn 0.6s ease-in;
+        }
+
+        .success-container h2 {
+            color: #BF00FF;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .success-message {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .success-details {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: left;
+            border: 2px solid rgba(191, 0, 255, 0.2);
+        }
+
+        .success-details p {
+            margin: 12px 0;
+            color: var(--text-color);
+        }
+
+        .success-contact {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #BF00FF, #7B00CC);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .main-content {
+                padding: 25px 15px;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-step h2 {
+                font-size: 1.3rem;
+            }
+
+            .rules-container {
+                padding: 20px;
+            }
+
+            .review-container {
+                padding: 20px;
+            }
+
+            .success-container {
+                padding: 30px 20px;
+            }
+
+            .success-icon {
+                font-size: 3rem;
+            }
+
+            .success-container h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                border-radius: 12px;
+            }
+
+            .header {
+                padding: 25px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .pricing-section h2,
+            .booking-section h2,
+            .form-step h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="tel"],
+            .form-group input[type="email"],
+            .form-group input[type="date"],
+            .form-group input[type="time"] {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .btn-large {
+                padding: 12px 28px;
+                font-size: 1rem;
+            }
+
+            .navigation-buttons {
+                gap: 10px;
+            }
+
+            .rules-container,
+            .review-container {
+                padding: 15px;
+            }
+
+            .success-container {
+                padding: 25px 15px;
+            }
+
+            .success-icon {
+                font-size: 2.5rem;
+            }
+
+            .success-container h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏠 Reserva de Espaço</h1>
+            <p class="subtitle">Sistema de Reservas Online</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Seção de Preços e Serviços -->
+            <section class="pricing-section">
+                <h2>💰 Tabela de Preços</h2>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Aluguel Principal</h3>
+                        <p class="price">R$ 500,00</p>
+                        <p class="description">10 horas de aluguel</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Serviço de Gás</h3>
+                        <p class="price">R$ 35,00</p>
+                        <p class="description">Adicional opcional</p>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Limpeza</h3>
+                        <p class="price">R$ 50,00</p>
+                        <p class="description">Se espaço não ficar limpo</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulário de Reserva -->
+            <section class="booking-section">
+                <form id="bookingForm" class="booking-form">
+                    
+                    <!-- Etapa 1: Regras e Condições -->
+                    <div class="form-step" id="step1">
+                        <h2>📋 Regras e Condições</h2>
+                        <div class="rules-container">
+                            <h3>Antes de continuar, leia atentamente:</h3>
+                            <ul class="rules-list">
+                                <li>✓ O espaço só pode ser reservado nos <strong>finais de semana (sábados e domingos) e feriados nacionais</strong></li>
+                                <li>✓ O horário de funcionamento é de <strong>08:00 até 21:00</strong></li>
+                                <li>✓ O aluguel é de <strong>10 horas contínuas</strong></li>
+                                <li>✓ Você deve manter o espaço <strong>limpo e organizado</strong> durante o uso</li>
+                                <li>✓ Caso não deixe o espaço limpo, será cobrada <strong>taxa de limpeza de R$ 50,00</strong></li>
+                                <li>✓ O fornecimento de gás é <strong>opcional</strong> (R$ 35,00 adicional)</li>
+                                <li>✓ É obrigatório informar <strong>nome completo e telefone</strong> para contato</li>
+                                <li>✓ A confirmação da reserva será enviada por <strong>SMS/WhatsApp</strong></li>
+                                <li>✓ Cancelamentos devem ser feitos com <strong>24 horas de antecedência</strong></li>
+                                <li>✓ Respeitamos a <strong>privacidade e segurança</strong> de todos os dados fornecidos</li>
+                            </ul>
+                        </div>
+
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="rulesCheckbox" required>
+                            <label for="rulesCheckbox">Concordo com todas as regras e condições acima</label>
+                        </div>
+
+                        <button type="button" class="btn btn-primary" id="continueBtn" onclick="goToStep(2)" disabled>
+                            Continuar com a Reserva →
+                        </button>
+                    </div>
+
+                    <!-- Etapa 2: Seleção de Data e Horário -->
+                    <div class="form-step hidden" id="step2">
+                        <h2>📅 Selecione a Data e Horário</h2>
+
+                        <div class="form-group">
+                            <label for="reservationDate">Data de Reserva *</label>
+                            <input type="date" id="reservationDate" required>
+                            <small id="dateError" class="error-message"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startTime">Horário de Início (entre 08:00 e 13:00) *</label>
+                            <input type="time" id="startTime" min="08:00" max="13:00" required>
+                            <small class="info-text">Duração: 10 horas</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endTime">Horário de Término (automático)</label>
+                            <input type="time" id="endTime" disabled>
+                            <small class="info-text">Será calculado automaticamente</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gasService">
+                                <input type="checkbox" id="gasService">
+                                Adicionar Serviço de Gás (+R$ 35,00)
+                            </label>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button type="button" class="btn btn-secondary" onclick="goToStep(1)">
+                                ← Voltar
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="goToStep(3)">
+                                Continuar →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 3: Dados Pessoais -->
+                    <div class="form-step hidden" id="step3">
+                        <h2>👤 Seus Dados Pessoais</h2>
+
+                        <div class="form-group">
+                            <label for="fullName">Nome Completo *</label>
+                            <input type="text" id="fullName" placeholder="Digite seu nome completo" required>
+                            <small id="nameError" class="error-message"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp *</label>
+                            <input type="tel" id="phone" placeholder="(00) 00000-0000" required>
+                            <small id="phoneError" class="error-message"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email (opcional)</label>
+                            <input type="email" id="email" placeholder="seu.email@example.com">
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button type="button" class="btn btn-secondary" onclick="goToStep(2)">
+                                ← Voltar
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="goToStep(4)">
+                                Continuar →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 4: Revisão e Confirmação -->
+                    <div class="form-step hidden" id="step4">
+                        <h2>✅ Revisão da Reserva</h2>
+
+                        <div class="review-container">
+                            <div class="review-section">
+                                <h3>📅 Data e Horário</h3>
+                                <p>
+                                    <strong>Data:</strong> <span id="reviewDate">-</span>
+                                </p>
+                                <p>
+                                    <strong>Horário:</strong> <span id="reviewTime">-</span>
+                                </p>
+                            </div>
+
+                            <div class="review-section">
+                                <h3>👤 Informações Pessoais</h3>
+                                <p>
+                                    <strong>Nome:</strong> <span id="reviewName">-</span>
+                                </p>
+                                <p>
+                                    <strong>Telefone:</strong> <span id="reviewPhone">-</span>
+                                </p>
+                                <p id="reviewEmailSection" style="display: none;">
+                                    <strong>Email:</strong> <span id="reviewEmail">-</span>
+                                </p>
+                            </div>
+
+                            <div class="review-section">
+                                <h3>💰 Resumo Financeiro</h3>
+                                <div class="price-breakdown">
+                                    <div class="price-item">
+                                        <span>Aluguel (10 horas):</span>
+                                        <span>R$ 500,00</span>
+                                    </div>
+                                    <div class="price-item" id="gasItem" style="display: none;">
+                                        <span>Serviço de Gás:</span>
+                                        <span>R$ 35,00</span>
+                                    </div>
+                                    <div class="price-item-total">
+                                        <span>Total:</span>
+                                        <span id="totalPrice">R$ 500,00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="confirmation-checkbox">
+                                <input type="checkbox" id="confirmCheckbox" required>
+                                <label for="confirmCheckbox">
+                                    Confirmo que realmente desejo reservar o espaço nas condições acima
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <button type="button" class="btn btn-secondary" onclick="goToStep(3)">
+                                ← Voltar
+                            </button>
+                            <button type="submit" class="btn btn-success btn-large">
+                                ✓ Confirmar Reserva
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- Mensagem de Sucesso -->
+            <section class="success-section hidden" id="successSection">
+                <div class="success-container">
+                    <div class="success-icon">✓</div>
+                    <h2>Reserva Confirmada com Sucesso!</h2>
+                    <p class="success-message">
+                        Sua reserva foi registrada e você receberá uma confirmação por SMS/WhatsApp
+                    </p>
+                    <div class="success-details">
+                        <p><strong>Localizador da Reserva:</strong> <span id="bookingId"></span></p>
+                        <p><strong>Data:</strong> <span id="successDate"></span></p>
+                        <p><strong>Horário:</strong> <span id="successTime"></span></p>
+                        <p><strong>Valor Total:</strong> <span id="successTotal"></span></p>
+                    </div>
+                    <p class="success-contact">
+                        Guardaremos seu contato para enviar lembretes e confirmações.
+                    </p>
+                    <button type="button" class="btn btn-primary" onclick="newBooking()">
+                        Nova Reserva
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Sistema de Reservas. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Feriados Nacionais Brasileiros de 2026
+        const nationalHolidays2026 = [
+            '2026-01-01', // Ano Novo
+            '2026-02-16', // Segunda-feira de Carnaval
+            '2026-02-17', // Carnaval
+            '2026-02-18', // Quarta-feira de Cinzas
+            '2026-04-21', // Tiradentes
+            '2026-05-01', // Dia do Trabalho
+            '2026-09-07', // Independência
+            '2026-10-12', // Nossa Senhora Aparecida
+            '2026-11-02', // Finados
+            '2026-11-20', // Consciência Negra
+            '2026-12-25', // Natal
+        ];
+
+        // Estados dos elementos
+        let currentStep = 1;
+        let bookingData = {
+            date: '',
+            startTime: '',
+            endTime: '',
+            gasService: false,
+            fullName: '',
+            phone: '',
+            email: '',
+            total: 500,
+        };
+
+        // Elementos do DOM
+        const rulesCheckbox = document.getElementById('rulesCheckbox');
+        const continueBtn = document.getElementById('continueBtn');
+        const reservationDateInput = document.getElementById('reservationDate');
+        const startTimeInput = document.getElementById('startTime');
+        const endTimeInput = document.getElementById('endTime');
+        const gasServiceCheckbox = document.getElementById('gasService');
+        const fullNameInput = document.getElementById('fullName');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const bookingForm = document.getElementById('bookingForm');
+        const successSection = document.getElementById('successSection');
+
+        // Event Listeners
+        rulesCheckbox.addEventListener('change', toggleContinueButton);
+        reservationDateInput.addEventListener('change', validateDate);
+        startTimeInput.addEventListener('change', calculateEndTime);
+        gasServiceCheckbox.addEventListener('change', updateTotal);
+        phoneInput.addEventListener('input', formatPhoneNumber);
+        bookingForm.addEventListener('submit', handleFormSubmit);
+
+        // Habilitar/Desabilitar botão de continuar
+        function toggleContinueButton() {
+            continueBtn.disabled = !rulesCheckbox.checked;
+        }
+
+        // Validar se a data é fim de semana ou feriado
+        function isValidReservationDate(dateString) {
+            const date = new Date(dateString + 'T00:00:00');
+            const dayOfWeek = date.getDay();
+            
+            // Verificar se é fim de semana (sábado = 6, domingo = 0)
+            const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+            
+            // Verificar se é feriado nacional
+            const isHoliday = nationalHolidays2026.includes(dateString);
+            
+            return isWeekend || isHoliday;
+        }
+
+        // Validar data
+        function validateDate() {
+            const selectedDate = reservationDateInput.value;
+            const dateError = document.getElementById('dateError');
+            
+            if (!selectedDate) {
+                dateError.classList.remove('show');
+                return;
+            }
+            
+            // Verificar se é data futura
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selected = new Date(selectedDate + 'T00:00:00');
+            
+            if (selected < today) {
+                dateError.textContent = '❌ A data não pode ser no passado.';
+                dateError.classList.add('show');
+                reservationDateInput.value = '';
+                return;
+            }
+            
+            // Verificar se é fim de semana ou feriado
+            if (!isValidReservationDate(selectedDate)) {
+                dateError.textContent = '❌ Reservas permitidas apenas nos finais de semana e feriados nacionais.';
+                dateError.classList.add('show');
+                reservationDateInput.value = '';
+                return;
+            }
+            
+            dateError.classList.remove('show');
+            bookingData.date = selectedDate;
+            updateReviewDate();
+        }
+
+        // Calcular horário de término (10 horas de aluguel)
+        function calculateEndTime() {
+            const startTime = startTimeInput.value;
+            
+            if (!startTime) {
+                endTimeInput.value = '';
+                return;
+            }
+            
+            // Extrair horas e minutos
+            const [hours, minutes] = startTime.split(':').map(Number);
+            
+            // Adicionar 10 horas
+            let endHours = hours + 10;
+            let endMinutes = minutes;
+            
+            // Ajustar se passar de 24 horas
+            if (endHours >= 24) {
+                endHours -= 24;
+            }
+            
+            // Formatar a hora
+            const endTime = `${String(endHours).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}`;
+            endTimeInput.value = endTime;
+            
+            bookingData.startTime = startTime;
+            bookingData.endTime = endTime;
+            updateReviewTime();
+        }
+
+        // Atualizar total quando selecionar gás
+        function updateTotal() {
+            bookingData.gasService = gasServiceCheckbox.checked;
+            const basePrice = 500;
+            bookingData.total = bookingData.gasService ? basePrice + 35 : basePrice;
+            updateReviewPrice();
+        }
+
+        // Formatar número de telefone
+        function formatPhoneNumber(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            
+            if (value.length <= 2) {
+                value = value;
+            } else if (value.length <= 6) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else if (value.length <= 10) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
+            } else {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+            }
+            
+            e.target.value = value;
+        }
+
+        // Validar nome
+        function validateName(name) {
+            const nameRegex = /^[a-záéíóúâêôãõç\s]{3,}$/i;
+            return nameRegex.test(name);
+        }
+
+        // Validar telefone
+        function validatePhone(phone) {
+            const phoneRegex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
+            return phoneRegex.test(phone);
+        }
+
+        // Validar email (opcional)
+        function validateEmail(email) {
+            if (!email) return true; // Email é opcional
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Atualizar revisão de data
+        function updateReviewDate() {
+            const dateSpan = document.getElementById('reviewDate');
+            if (bookingData.date) {
+                const date = new Date(bookingData.date + 'T00:00:00');
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = date.toLocaleDateString('pt-BR', options);
+                dateSpan.textContent = formattedDate;
+            }
+        }
+
+        // Atualizar revisão de horário
+        function updateReviewTime() {
+            const timeSpan = document.getElementById('reviewTime');
+            if (bookingData.startTime && bookingData.endTime) {
+                timeSpan.textContent = `${bookingData.startTime} - ${bookingData.endTime} (10 horas)`;
+            }
+        }
+
+        // Atualizar revisão de preço
+        function updateReviewPrice() {
+            const gasItem = document.getElementById('gasItem');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            if (bookingData.gasService) {
+                gasItem.style.display = 'flex';
+            } else {
+                gasItem.style.display = 'none';
+            }
+            
+            totalPrice.textContent = `R$ ${bookingData.total.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Navegar entre etapas
+        function goToStep(stepNumber) {
+            // Validar etapa atual antes de avançar
+            if (stepNumber > currentStep) {
+                if (!validateCurrentStep()) {
+                    return;
+                }
+            }
+            
+            // Ocultar etapa atual
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            
+            // Mostrar nova etapa
+            currentStep = stepNumber;
+            document.getElementById(`step${currentStep}`).classList.remove('hidden');
+            
+            // Atualizar revisão
+            if (stepNumber === 4) {
+                updateReview();
+            }
+            
+            // Rolar para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Validar etapa atual
+        function validateCurrentStep() {
+            const nameError = document.getElementById('nameError');
+            const phoneError = document.getElementById('phoneError');
+            const dateError = document.getElementById('dateError');
+            
+            switch (currentStep) {
+                case 2:
+                    // Validar data e horário
+                    if (!reservationDateInput.value) {
+                        dateError.textContent = '❌ Selecione uma data válida.';
+                        dateError.classList.add('show');
+                        return false;
+                    }
+                    
+                    if (!startTimeInput.value) {
+                        alert('❌ Selecione um horário de início.');
+                        return false;
+                    }
+                    
+                    return true;
+                    
+                case 3:
+                    // Validar dados pessoais
+                    const fullName = fullNameInput.value.trim();
+                    const phone = phoneInput.value.trim();
+                    const email = emailInput.value.trim();
+                    
+                    if (!fullName) {
+                        nameError.textContent = '❌ Nome completo é obrigatório.';
+                        nameError.classList.add('show');
+                        return false;
+                    }
+                    
+                    if (!validateName(fullName)) {
+                        nameError.textContent = '❌ Nome deve ter no mínimo 3 caracteres.';
+                        nameError.classList.add('show');
+                        return false;
+                    }
+                    nameError.classList.remove('show');
+                    
+                    if (!phone) {
+                        phoneError.textContent = '❌ Telefone é obrigatório.';
+                        phoneError.classList.add('show');
+                        return false;
+                    }
+                    
+                    if (!validatePhone(phone)) {
+                        phoneError.textContent = '❌ Formato de telefone inválido.';
+                        phoneError.classList.add('show');
+                        return false;
+                    }
+                    phoneError.classList.remove('show');
+                    
+                    if (!validateEmail(email)) {
+                        alert('❌ Formato de email inválido.');
+                        return false;
+                    }
+                    
+                    bookingData.fullName = fullName;
+                    bookingData.phone = phone;
+                    bookingData.email = email;
+                    
+                    return true;
+                    
+                default:
+                    return true;
+            }
+        }
+
+        // Atualizar revisão
+        function updateReview() {
+            document.getElementById('reviewDate').textContent = formatDateForDisplay(bookingData.date);
+            document.getElementById('reviewTime').textContent = `${bookingData.startTime} - ${bookingData.endTime} (10 horas)`;
+            document.getElementById('reviewName').textContent = bookingData.fullName;
+            document.getElementById('reviewPhone').textContent = bookingData.phone;
+            
+            if (bookingData.email) {
+                document.getElementById('reviewEmailSection').style.display = 'block';
+                document.getElementById('reviewEmail').textContent = bookingData.email;
+            } else {
+                document.getElementById('reviewEmailSection').style.display = 'none';
+            }
+            
+            // Atualizar preço
+            const gasItem = document.getElementById('gasItem');
+            const totalPrice = document.getElementById('totalPrice');
+            
+            if (bookingData.gasService) {
+                gasItem.style.display = 'flex';
+            } else {
+                gasItem.style.display = 'none';
+            }
+            
+            totalPrice.textContent = `R$ ${bookingData.total.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Formatar data para exibição
+        function formatDateForDisplay(dateString) {
+            const date = new Date(dateString + 'T00:00:00');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('pt-BR', options);
+        }
+
+        // Gerar ID único para reserva
+        function generateBookingId() {
+            return 'RES-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+
+        // Processar envio do formulário
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Validar checkbox de confirmação
+            const confirmCheckbox = document.getElementById('confirmCheckbox');
+            if (!confirmCheckbox.checked) {
+                alert('❌ Você deve confirmar que deseja fazer a reserva.');
+                return;
+            }
+            
+            // Gerar ID de reserva
+            const bookingId = generateBookingId();
+            
+            // Ocultar formulário
+            bookingForm.classList.add('hidden');
+            
+            // Mostrar tela de sucesso
+            successSection.classList.remove('hidden');
+            
+            // Preencher dados de sucesso
+            document.getElementById('bookingId').textContent = bookingId;
+            document.getElementById('successDate').textContent = formatDateForDisplay(bookingData.date);
+            document.getElementById('successTime').textContent = `${bookingData.startTime} - ${bookingData.endTime}`;
+            document.getElementById('successTotal').textContent = `R$ ${bookingData.total.toFixed(2).replace('.', ',')}`;
+            
+            // Simular envio de dados (em produção, enviar para um servidor)
+            console.log('Reserva confirmada:', {
+                bookingId,
+                ...bookingData,
+                confirmadoEm: new Date().toLocaleString('pt-BR'),
+            });
+            
+            // Rolar para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Nova reserva
+        function newBooking() {
+            // Reset do formulário
+            bookingForm.reset();
+            successSection.classList.add('hidden');
+            bookingForm.classList.remove('hidden');
+            
+            // Resetar dados
+            currentStep = 1;
+            bookingData = {
+                date: '',
+                startTime: '',
+                endTime: '',
+                gasService: false,
+                fullName: '',
+                phone: '',
+                email: '',
+                total: 500,
+            };
+            
+            // Mostrar primeira etapa
+            document.querySelectorAll('.form-step').forEach((step, index) => {
+                if (index === 0) {
+                    step.classList.remove('hidden');
+                } else {
+                    step.classList.add('hidden');
+                }
+            });
+            
+            // Limpar erros
+            document.getElementById('dateError').classList.remove('show');
+            document.getElementById('nameError').classList.remove('show');
+            document.getElementById('phoneError').classList.remove('show');
+            
+            // Desabilitar botão continuar
+            continueBtn.disabled = true;
+            
+            // Rolar para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Definir data mínima como hoje
+        function setMinimumDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            reservationDateInput.min = `${year}-${month}-${day}`;
+        }
+
+        // Inicializar
+        function init() {
+            setMinimumDate();
+            continueBtn.disabled = true;
+        }
+
+        // Chamar init ao carregar a página
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
