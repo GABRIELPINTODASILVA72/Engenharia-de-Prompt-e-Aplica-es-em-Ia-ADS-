@@ -2,26 +2,79 @@
 
 # **NOME DO DESAFIO: AUTOMAÇÃO DE RESERVA DE ALUGUEL**
 
-
-**TELAS DO SITE PARA RESERVAR ALUGUEL**
-
-
-<img width="814" height="767" alt="Captura de tela 2026-05-13 210421" src="https://github.com/user-attachments/assets/151b3c72-33a5-48bc-af32-a42536eadd6f" />
-
-****
-<img width="664" height="571" alt="Captura de tela 2026-05-13 212315" src="https://github.com/user-attachments/assets/72f8d80d-2eef-415e-b1e4-c552d0420102" />     
+**TELA INICIAL, COMTENDO AS REGRAS**
 
 
-****
-<img width="747" height="581" alt="Captura de tela 2026-05-13 212432" src="https://github.com/user-attachments/assets/a2b94a07-ee28-4471-b176-54483d25dd89" />
+<img width="601" height="1060" alt="Captura de tela 2026-05-20 151812" src="https://github.com/user-attachments/assets/e5b02d6e-6c69-4993-8d0d-0df6256b9b47" />
 
-****
 
-<img width="732" height="602" alt="Captura de tela 2026-05-13 212445" src="https://github.com/user-attachments/assets/19b9af0b-ccd1-40bf-8d55-79a5b0571d04" />
+# **TELA PARA DIFINIR DATA E HORA**
 
-****
 
-<img width="694" height="588" alt="Captura de tela 2026-05-13 212504" src="https://github.com/user-attachments/assets/680ed5ac-12cc-4f57-96d0-814e26894915" />
+<img width="597" height="844" alt="Captura de tela 2026-05-20 151832" src="https://github.com/user-attachments/assets/04c951a8-5803-4be3-a3d3-09d5f8273b6f" />
+
+# **TELA PARA O PREENCHIMENTO DOS DADOS PESSOAIS**
+
+<img width="595" height="767" alt="Captura de tela 2026-05-20 152004" src="https://github.com/user-attachments/assets/3685d730-ea8b-40d5-a83a-92001b3e0baa" />
+
+
+# **TELA PARA COMFIRMAR OS DADOS DA RESERVA**
+
+
+<img width="599" height="1069" alt="Captura de tela 2026-05-20 152133" src="https://github.com/user-attachments/assets/de5f7e80-2744-4366-8f90-5478d1f1cb15" />
+
+
+# BREVE EXPLICAÇÃO DO PROJETO 
+
+  O projeto tem como obijetivo auxiliar na reserva de alugueis, Facilitando o cliente e o dono do local, sem a necessidade o cliente entra em contato e marcar , com o site e preciso apenas o cliente escolher a data e horario e preencher os campos obrigatorios como nome, telefone e email. 
+
+
+link para imagems no docs
+
+https://docs.google.com/document/d/1w3z-mvUGJVIN6uouFmfs1sqFuxSxqPssvf4nSpL2jOU/edit?usp=drive_link
+
+
+# SITE ULTILIZADO
+
+- Eu ultilizei o CHAT GPT para criar tudo, toda a parte de css html foi com o CHAT GPT.
+
+- Eu ultilizei ele por que ele era o a llm que eu tenho mais familiaridade, e por ser mais acertivo no que eu peço.
+
+# VANTAGEMS INDENTIFICADAS
+
+1- PROTÓTIPO RÁPIDO: com o primeiro prompt ele criou quase tudo. 
+
+2- PARECIDO COM O QUE FOI PEDIDO: ele criou um prototipo bem aparecido com o que foi pedido no prompt.
+
+3- NÃO COLOCOU COISAS A MAIS: ele nao adicionou coisas que eu nao tinha colocado no prompt.
+
+
+# LIMITAÇÃO ENCONTRADA
+
+1- PEDIR PARA ADICIONAR ALGO: quando pedido para adidcionar algo ele modificava o codigo que nao foi pedido.
+
+2- IA COM LIMITE DE PERGUNTAS: não podia faz muitas perguntas, se não acabava o teste gratis.
+
+3- 
+
+
+# REFLEXÃO CRÍTICA
+
+  tive algumas limitações como limite de perguntas, porém era muito facil de resolver, apenas entrando em outra gia resolvia o problema de limite e com a mudanca de codigo quando era pedido para adicionar algo, eu apemas repetia o pedido e mudando um pouco o prompt, ate que ele chegue em uma versão que me agrade.
+
+
+# PROXIMOS PASSOS
+
+1- ADICIONAR PAGAMENTOO 
+
+2- 
+
+
+
+
+
+
+
 
 
 
