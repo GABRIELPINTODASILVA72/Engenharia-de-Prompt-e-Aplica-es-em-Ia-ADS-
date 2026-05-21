@@ -9,7 +9,8 @@ prompt simples : crie uma calculadora simples em python.
    
 
 
-````python
+```python
+
 # Calculadora simples
 
 def calcular():
@@ -38,8 +39,10 @@ def calcular():
     else:
         print("Opção inválida!")
 
+
 calcular()
-````
+
+```
 > 2. Compartilhe o resultado no Readme do repositório da disciplina.
 
 compartilhado na missao 1
