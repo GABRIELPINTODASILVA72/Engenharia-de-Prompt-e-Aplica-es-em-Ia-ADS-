@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Natureza Perfeita</title>
+    <style>
+        /* Cores inspiradas na Natureza e Reset */
+        :root {
+            --verde-folha: #2e7d32;
+            --verde-claro: #4caf50;
+            --terra: #8d6e63;
+            --fundo-leve: #f1f8e9;
+            --texto-escuro: #263238;
+            --branco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--fundo-leve);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--verde-folha);
+            color: var(--branco);
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: var(--branco);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--verde-claro);
+        }
+
+        h2 {
+            color: var(--verde-folha);
+            margin-bottom: 1rem;
+        }
+
+        .preco-destaque {
+            font-size: 1.8rem;
+            color: var(--terra);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Regras e Checkbox */
+        .regras-lista {
+            background: #f9f9f9;
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--terra);
+            margin-bottom: 1.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .regras-lista li {
+            margin-bottom: 0.5rem;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Formulários e Inputs */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--verde-claro);
+            outline: none;
+        }
+
+        .opcoes-adicionais {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        /* Botões */
+        .btn {
+            background-color: var(--verde-folha);
+            color: var(--branco);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--verde-claro);
+        }
+
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Telas Ocultas inicialmente */
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--texto-escuro);
+            color: #eceff1;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            main { margin: 1rem auto; }
+            .card { padding: 1.2rem; }
+            .preco-destaque { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Reserva Espaço Ar Livre 🌿</h1>
+        <p>Viva momentos inesquecíveis perto da natureza</p>
+    </header>
+
+    <main>
+        <section id="tela-regras" class="card">
+            <h2>Seja Muito Bem-Vindo!</h2>
+            <p>Aproveite um espaço amplo, arejado e cercado de plantas e vida verde.</p>
+            <div class="preco-destaque">Valor do Aluguel: R$ 500,00 <small>(Período fixo de 10 horas)</small></div>
+            
+            <h3>📋 Regras do Espaço</h3>
+            <div class="regras-lista">
+                <ul>
+                    <li>Não é permitido correr no condomínio.</li>
+                    <li>Não é permitido som automotivo ou excessivamente alto.</li>
+                    <li>Proibido comer dentro ou na borda da piscina.</li>
+                    <li>Não é permitida a entrada no local sem a confirmação do pagamento.</li>
+                    <li>Proibido quebrar plantas ou gostar de arrancar mudas e depredar as áreas verdes.</li>
+                    <li>Recolha o lixo produzido em sacos apropriados.</li>
+                    <li>Respeite o horário de silêncio do condomínio após às 22h.</li>
+                </ul>
+            </div>
+
+            <label class="checkbox-container">
+                <input type="checkbox" id="chk-regras" onchange="validarRegras()">
+                Eu li e concordo com todas as regras do espaço.
+            </label>
+            <br>
+            <button id="btn-prosseguir-1" class="btn" disabled onclick="irParaFormulario()">Prosseguir para Reserva</button>
+        </section>
+
+        <section id="tela-cadastro" class="card hidden">
+            <h2>Dados da Reserva & Serviços</h2>
+            <form id="form-reserva" onsubmit="irParaPagamento(event)">
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" required placeholder="Ex: João Silva">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required placeholder="Ex: joao@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="tel" id="telefone" required placeholder="Ex: (11) 99999-9999">
+                </div>
+                
+                <div class="form-group">
+                    <label for="data">Selecione a Data (Finais de semana e Feriados 2026):</label>
+                    <select id="data" required>
+                        <option value="">-- Escolha uma data disponível --</option>
+                        <option value="30/05/2026">30/05/2026 (Sábado)</option>
+                        <option value="31/05/2026">31/05/2026 (Domingo)</option>
+                        <option value="06/06/2026">06/06/2026 (Sábado)</option>
+                        <option value="07/06/2026">07/06/2026 (Domingo)</option>
+                        <option value="09/07/2026">09/07/2026 (Feriado Estadual/Nacional)</option>
+                        <option value="12/10/2026">12/10/2026 (Feriado - Nsa. Sra. Aparecida)</option>
+                        <option value="15/11/2026">15/11/2026 (Feriado - Proclamação da República)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="horario">Escolha o Turno de 10 Horas (Disponível entre 08h e 20h):</label>
+                    <select id="horario" required>
+                        <option value="">-- Escolha um horário fixo --</option>
+                        <option value="08:00 às 18:00">Das 08:00 às 18:00 (10 horas de uso)</option>
+                        <option value="09:00 às 19:00">Das 09:00 às 19:00 (10 horas de uso)</option>
+                        <option value="10:00 às 20:00">Das 10:00 às 20:00 (10 horas de uso)</option>
+                    </select>
+                </div>
+
+                <div class="form-group opcoes-adicionais">
+                    <h3>Serviços Adicionais</h3>
+                    <label>
+                        <input type="checkbox" id="adicional-gas" value="35" onchange="calcularTotal()"> Uso do Gás de Cozinha (+ R$ 35,00)
+                    </label>
+                    <br><br>
+                    <label>
+                        <input type="checkbox" id="adicional-limpeza" value="50" onchange="calcularTotal()"> 
+                        Vou realizar a limpeza do local (Se não marcar e não limpar no dia, será cobrado R$ 50,00 no local).
+                    </label>
+                </div>
+
+                <div class="preco-destaque" id="exibir-total">Total: R$ 500,00</div>
+
+                <button type="submit" class="btn">Ir para o Pagamento</button>
+            </form>
+        </section>
+
+        <section id="tela-pagamento" class="card hidden">
+            <h2>Tela de Pagamento</h2>
+            <p>Escolha a forma de pagamento ideal para você. *Ambiente de demonstração segura.</p>
+            <br>
+            <div class="form-group">
+                <label for="metodo-pagamento">Forma de Pagamento:</label>
+                <select id="metodo-pagamento" required>
+                    <option value="Pix">Pix (Aprovação imediata)</option>
+                    <option value="Dinheiro">Pagar no Local (Dinheiro)</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                </select>
+            </div>
+
+            <div class="preco-destaque" id="pagamento-total">Total a pagar: R$ 500,00</div>
+            <button class="btn" onclick="finalizarPagamento()">Confirmar e Finalizar Reserva</button>
+        </section>
+
+        <section id="tela-sucesso" class="card hidden" style="text-align: center;">
+            <h2 style="color: var(--verde-claro);">🎉 Reserva Confirmada com Sucesso!</h2>
+            <br>
+            <p>Obrigado, <strong id="sucesso-nome"></strong>! Sua reserva para o dia <strong id="sucesso-data"></strong> no período das <strong id="sucesso-horario"></strong> foi registrada.</p>
+            <p style="margin-top: 10px; color: var(--terra); font-weight: bold;">📥 O arquivo com os dados da reserva foi gerado para o dono do espaço!</p>
+            <br>
+            <button class="btn" onclick="reiniciar()">Fazer Nova Reserva</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>CRIADO POR GABRIEL PINTO DA SILVA</p>
+        <p style="font-size: 0.8rem; margin-top: 5px; color: #b0bec5;">© 2026 Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Lógica do Sistema
+        let valorBase = 500;
+        let valorFinalGlobal = 500;
+
+        function validarRegras() {
+            const chk = document.getElementById('chk-regras');
+            document.getElementById('btn-prosseguir-1').disabled = !chk.checked;
+        }
+
+        function irParaFormulario() {
+            document.getElementById('tela-regras').classList.add('hidden');
+            document.getElementById('tela-cadastro').classList.remove('hidden');
+        }
+
+        function calcularTotal() {
+            let total = valorBase;
+            const gas = document.getElementById('adicional-gas');
+            const limpeza = document.getElementById('adicional-limpeza');
+
+            if (gas.checked) total += 35;
+            if (!limpeza.checked) total += 50; 
+
+            valorFinalGlobal = total;
+            document.getElementById('exibir-total').innerText = `Total: R$ ${total},00`;
+            document.getElementById('pagamento-total').innerText = `Total a pagar: R$ ${total},00`;
+        }
+
+        function irParaPagamento(event) {
+            event.preventDefault();
+            document.getElementById('tela-cadastro').classList.add('hidden');
+            document.getElementById('tela-pagamento').classList.remove('hidden');
+        }
+
+        // Função principal que gera o arquivo de texto para o Proprietário
+        function gerouArquivoDono(nome, email, telefone, data, horario, gasContratado, limpezaContratada, metodoPgto, total) {
+            const conteudoArquivo = `==================================================
+COMPROVANTE DE RESERVA - PROPRIETÁRIO DO ESPAÇO
+==================================================
+DADOS DO CLIENTE:
+Nome Completo: ${nome}
+E-mail: ${email}
+Telefone/WhatsApp: ${telefone}
+
+DETALHES DA LOCAÇÃO (Período de 10h):
+Data Reservada: ${data}
+Horário Selecionado: ${horario}
+
+SERVIÇOS ADICIONAIS:
+Utilizou Gás de Cozinha? ${gasContratado}
+Cliente vai Limpar o Local? ${limpezaContratada}
+
+FINANCEIRO:
+Forma de Pagamento Escolhida: ${metodoPgto}
+VALOR TOTAL DA RESERVA: R$ ${total},00
+==================================================`;
+
+            // Transforma o conteúdo de texto em um arquivo para download instantâneo
+            const blob = new Blob([conteudoArquivo], { type: "text/plain;charset=utf-8" });
+            const linkDownload = document.createElement("a");
+            linkDownload.href = URL.createObjectURL(blob);
+            linkDownload.download = `Reserva_${data.replace(/\//g, '-')}_${nome.replace(/\s+/g, '_')}.txt`;
+            document.body.appendChild(linkDownload);
+            linkDownload.click();
+            document.body.removeChild(linkDownload);
+        }
+
+        function finalizarPagamento() {
+            const nomeInput = document.getElementById('nome').value;
+            const emailInput = document.getElementById('email').value;
+            const telefoneInput = document.getElementById('telefone').value;
+            const dataInput = document.getElementById('data').value;
+            const horarioInput = document.getElementById('horario').value;
+            const gasStatus = document.getElementById('adicional-gas').checked ? "SIM (+R$35)" : "NÃO";
+            const limpezaStatus = document.getElementById('adicional-limpeza').checked ? "SIM (Isento de taxa)" : "NÃO (Taxa de R$50 inclusa)";
+            const formaPgto = document.getElementById('metodo-pagamento').value;
+
+            // Executa a geração do documento de texto para o proprietário
+            gerouArquivoDono(nomeInput, emailInput, telefoneInput, dataInput, horarioInput, gasStatus, limpezaStatus, formaPgto, valorFinalGlobal);
+
+            // Passar dados informativos para a tela final de sucesso
+            document.getElementById('sucesso-nome').innerText = nomeInput;
+            document.getElementById('sucesso-data').innerText = dataInput;
+            document.getElementById('sucesso-horario').innerText = horarioInput;
+
+            document.getElementById('tela-pagamento').classList.add('hidden');
+            document.getElementById('tela-sucesso').classList.remove('hidden');
+        }
+
+        function reiniciar() {
+            document.getElementById('form-reserva').reset();
+            document.getElementById('chk-regras').checked = false;
+            document.getElementById('btn-prosseguir-1').disabled = true;
+            calcularTotal();
+            
+            document.getElementById('tela-sucesso').classList.add('hidden');
+            document.getElementById('tela-regras').classList.remove('hidden');
+        }
+
+        // Inicialização padrão
+        calcularTotal();
+    </script>
+</body>
+</html>
