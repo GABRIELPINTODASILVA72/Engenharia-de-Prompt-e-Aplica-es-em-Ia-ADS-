@@ -37,13 +37,13 @@ Liste pelo menos 3 limitações percebidas:
 
 1- PEDIR PARA ADICIONAR ALGO: quando era pedido para adicionar algo, ele modificava partes do código que não haviam sido solicitadas.
 
-2- IA COM LIMITE DE PERGUNTAS: não podia fazer muitas perguntas, senão acabava o teste grátis.
+2- NÃO EXECULTAVA CORRETAMENTE: Sempre que uma tarefa lhe era solicitada, ele a executava, porém com falhas ou sem a devida precisão.
 
 3- ELE PEDIA PARA EU ADICIONAR UM CÓDIGO AO MEU CÓDIGO: em vez de ele adicionar o código que eu pedia diretamente no código original, ele solicitava que eu colocasse manualmente o trecho que ele criou no código do site original.
 
 
 # 📚 Reflexão Crítica
-Tive algumas limitações como o limite de perguntas, porém era muito fácil de resolver: apenas entrando em outra guia o problema do limite era solucionado. E quanto à mudança de código quando era pedido para adicionar algo, eu apenas repetia o pedido mudando um pouco o prompt, até que ele chegasse a uma versão que me agradasse.
+Tive algumas limitações como algumas coisas serem execultadas mas não corretamente com falhas. E quanto à mudança de código quando era pedido para adicionar algo, eu apenas repetia o pedido mudando um pouco o prompt, até que ele chegasse a uma versão que me agradasse.
 
 # 👥 Colaboração
 Gabriel Pinto da Silva
