@@ -19,7 +19,7 @@ apenas que ele escolha a data e o horário e preencha os campos obrigatórios co
 O QUE FOI UTILIZADO
 
 
-  Eu utilizei o GEMINI para criar tudo; toda a parte de CSS e HTML foi feita com o GEMINI.
+  Eu utilizei o GEMINI CANVAS para criar tudo; toda a parte de CSS e HTML foi feita com o GEMINI CANVAS.
 
   Eu o utilizei por ser a LLM com a qual tenho mais familiaridade e por ser mais assertivo no que eu peço.
 
