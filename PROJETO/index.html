@@ -265,6 +265,15 @@
             color: #64748b;
         }
 
+        /* Mensagens de Alerta */
+        .alert-message {
+            color: #f87171;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
+            font-weight: 500;
+        }
+
         /* Checkboxes Personalizados */
         .checkbox-group {
             display: flex;
@@ -521,11 +530,12 @@
         <section id="tela-regras">
             <h2>Termos de Uso e Regras do Espaço</h2>
             <div class="regras-container">
-                <p><strong>1. Período de Locação:</strong> O período de reserva contratado é de até 10 horas contínuas, devendo ser respeitado rigorosamente o horário de término agendado.</p>
+                <p><strong>1. Período de Locação:</strong> O período de reserva contratado é restrito aos turnos predefinidos de 10 horas contínuas, devendo ser respeitado rigorosamente o horário de término agendado.</p>
                 <p><strong>2. Capacidade Máxima:</strong> A capacidade de segurança do salão é restrita a 120 convidados.</p>
                 <p><strong>3. Som e Barulho:</strong> De acordo com as leis municipais de silêncio vigentes, aparelhos sonoros e barulho excessivo devem cessar impreterivelmente às 22:00h.</p>
                 <p><strong>4. Limpeza e Conservação:</strong> Caso o contratante decida NÃO contratar o serviço de limpeza local por um adicional de R$50,00, compromete-se a entregar o espaço limpo e varrido exatamente como recebeu.</p>
                 <p><strong>5. Conservação e Danos:</strong> Quaisquer danos materiais causados às instalações, móveis ou equipamentos do salão de festas durante a locação serão de exclusiva responsabilidade do locatário e cobrados posteriormente.</p>
+                <p><strong>6. Dias Permitidos para Reserva:</strong> O espaço funciona exclusivamente aos finais de semana (Sábados e Domingos) e feriados nacionais oficiais.</p>
             </div>
             
             <label class="checkbox-label" style="margin-bottom: 24px;">
@@ -560,13 +570,19 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="data">Data Desejada</label>
-                        <input type="date" id="data" class="form-control" required>
+                        <label for="data">Data Desejada (Fim de semana ou Feriado)</label>
+                        <input type="date" id="data" class="form-control" required onchange="validarDataSelecionada()">
+                        <div id="data-alerta" class="alert-message">Escolha apenas finais de semana ou feriados nacionais.</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="horario">Horário de Início (10h de duração)</label>
-                        <input type="time" id="horario" class="form-control" required>
+                        <label for="horario">Período de Funcionamento</label>
+                        <select id="horario" class="form-control" required>
+                            <option value="" disabled selected>Selecione um horário fixo</option>
+                            <option value="08:00 às 18:00">08h a 18h (10 horas)</option>
+                            <option value="09:00 às 19:00">09h a 19h (10 horas)</option>
+                            <option value="10:00 às 20:00">10h a 20h (10 horas)</option>
+                        </select>
                     </div>
                 </div>
 
@@ -587,7 +603,7 @@
                 </div>
 
                 <div style="margin-top: 24px;">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" id="btn-prosseguir-cadastro" class="btn btn-success">
                         Prosseguir para o Pagamento
                     </button>
                 </div>
@@ -634,7 +650,7 @@
                     <h3>Resumo do Agendamento</h3>
                     <p><strong>Contratante:</strong> <span id="sucesso-nome">-</span></p>
                     <p><strong>Data Marcada:</strong> <span id="sucesso-data">-</span></p>
-                    <p><strong>Início Evento:</strong> <span id="sucesso-horario">-</span></p>
+                    <p><strong>Período Agendado:</strong> <span id="sucesso-horario">-</span></p>
                     <p><strong>Duração Limite:</strong> <span>10 Horas Consecutivas</span></p>
                 </div>
 
@@ -652,6 +668,69 @@
         // Lógica do Sistema
         let valorBase = 500;
         let valorFinalGlobal = 500;
+
+        // Lista estática de feriados nacionais do Brasil (no formato MM-DD)
+        const feriadosNacionais = [
+            "01-01", // Confraternização Universal
+            "04-21", // Tiradentes
+            "05-01", // Dia do Trabalho
+            "09-07", // Independência do Brasil
+            "10-12", // Nossa Senhora Aparecida
+            "11-02", // Finados
+            "11-15", // Proclamação da República
+            "11-20", // Dia de Zumbi e da Consciência Negra
+            "12-25"  // Natal
+        ];
+
+        // Feriados móveis calculados programaticamente (Ex: Carnaval, Sexta-feira Santa e Corpus Christi)
+        // Função auxiliar para calcular a Páscoa (algoritmo de Meeus/Jones/Butcher)
+        function obterFeriadosMoveis(ano) {
+            const a = ano % 19;
+            const b = Math.floor(ano / 100);
+            const c = ano % 100;
+            const d = Math.floor(b / 4);
+            const e = b % 4;
+            const f = Math.floor((b + 8) / 25);
+            const g = Math.floor((b - f + 1) / 3);
+            const h = (19 * a + b - d - g + 15) % 30;
+            const i = Math.floor(c / 4);
+            const k = c % 4;
+            const l = (32 + 2 * e + 2 * i - h - k) % 7;
+            const m = Math.floor((a + 11 * h + 22 * l) / 451);
+            const mesPascoa = Math.floor((h + l - 7 * m + 114) / 31);
+            const diaPascoa = ((h + l - 7 * m + 114) % 31) + 1;
+
+            const pascoa = new Date(ano, mesPascoa - 1, diaPascoa);
+
+            // Carnaval: 47 dias antes da páscoa (terça-feira)
+            const carnavalTerca = new Date(pascoa);
+            carnavalTerca.setDate(pascoa.getDate() - 47);
+
+            const carnavalSegunda = new Date(pascoa);
+            carnavalSegunda.setDate(pascoa.getDate() - 48);
+
+            // Sexta-feira Santa: 2 dias antes da páscoa
+            const sextaSanta = new Date(pascoa);
+            sextaSanta.setDate(pascoa.getDate() - 2);
+
+            // Corpus Christi: 60 dias após a páscoa
+            const corpusChristi = new Date(pascoa);
+            corpusChristi.setDate(pascoa.getDate() + 60);
+
+            return [
+                formatarMesDia(carnavalSegunda),
+                formatarMesDia(carnavalTerca),
+                formatarMesDia(sextaSanta),
+                formatarMesDia(pascoa),
+                formatarMesDia(corpusChristi)
+            ];
+        }
+
+        function formatarMesDia(dataObj) {
+            const mes = String(dataObj.getMonth() + 1).padStart(2, '0');
+            const dia = String(dataObj.getDate()).padStart(2, '0');
+            return `${mes}-${dia}`;
+        }
 
         function validarRegras() {
             const chk = document.getElementById('chk-regras');
@@ -679,6 +758,46 @@
             atualizarStepper(2);
         }
 
+        // Função para validar a data do agendamento
+        function validarDataSelecionada() {
+            const inputData = document.getElementById('data');
+            const alertaMsg = document.getElementById('data-alerta');
+            const btnProssiga = document.getElementById('btn-prosseguir-cadastro');
+            
+            if (!inputData.value) {
+                alertaMsg.style.display = "none";
+                btnProssiga.disabled = false;
+                return true;
+            }
+
+            // O formato vindo do HTML5 date input é YYYY-MM-DD
+            const partes = inputData.value.split('-');
+            const ano = parseInt(partes[0], 10);
+            const mes = parseInt(partes[1], 10) - 1; // Meses de 0 a 11
+            const dia = parseInt(partes[2], 10);
+
+            // Instancia a data local com segurança
+            const dataEscolhida = new Date(ano, mes, dia);
+            const diaDaSemana = dataEscolhida.getDay(); // 0 = Domingo, 6 = Sábado
+            
+            // Formatando em MM-DD para comparar com feriados fixos e móveis
+            const chaveMesDia = `${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+            const moveisDesteAno = obterFeriadosMoveis(ano);
+
+            const ehFimDeSemana = (diaDaSemana === 0 || diaDaSemana === 6);
+            const ehFeriadoNacional = feriadosNacionais.includes(chaveMesDia) || moveisDesteAno.includes(chaveMesDia);
+
+            if (ehFimDeSemana || ehFeriadoNacional) {
+                alertaMsg.style.display = "none";
+                btnProssiga.disabled = false;
+                return true;
+            } else {
+                alertaMsg.style.display = "block";
+                btnProssiga.disabled = true;
+                return false;
+            }
+        }
+
         function calcularTotal() {
             let total = valorBase;
             const gas = document.getElementById('adicional-gas');
@@ -697,6 +816,12 @@
 
         function irParaPagamento(event) {
             event.preventDefault();
+            
+            // Verificação extra de segurança de data antes de avançar
+            if (!validarDataSelecionada()) {
+                return;
+            }
+
             document.getElementById('tela-cadastro').classList.add('hidden');
             document.getElementById('tela-pagamento').classList.remove('hidden');
             atualizarStepper(3);
@@ -710,6 +835,14 @@
 
         // Função principal que gera o arquivo de texto para o Proprietário
         function gerouArquivoDono(nome, email, telefone, data, horario, gasContratado, limpezaContratada, metodoPgto, total) {
+            
+            // Formatando a data brasileira de YYYY-MM-DD para DD/MM/YYYY antes do arquivo
+            let dataFormatada = data;
+            if (data.includes('-')) {
+                const partes = data.split('-');
+                dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+            }
+
             const conteudoArquivo = `==================================================
 COMPROVANTE DE RESERVA - PROPRIETÁRIO DO ESPAÇO
 ==================================================
@@ -719,8 +852,8 @@ E-mail: ${email}
 Telefone/WhatsApp: ${telefone}
 
 DETALHES DA LOCAÇÃO (Período de 10h):
-Data Reservada: ${data}
-Horário Selecionado: ${horario}
+Data Reservada: ${dataFormatada}
+Turno Escolhido: ${horario}
 
 SERVIÇOS ADICIONAIS:
 Utilizou Gás de Cozinha? ${gasContratado}
@@ -735,7 +868,7 @@ VALOR TOTAL DA RESERVA: R$ ${total},00
             const blob = new Blob([conteudoArquivo], { type: "text/plain;charset=utf-8" });
             const linkDownload = document.createElement("a");
             linkDownload.href = URL.createObjectURL(blob);
-            linkDownload.download = `Reserva_${data.replace(/\//g, '-')}_${nome.replace(/\s+/g, '_')}.txt`;
+            linkDownload.download = `Reserva_${dataFormatada.replace(/\//g, '-')}_${nome.replace(/\s+/g, '_')}.txt`;
             document.body.appendChild(linkDownload);
             linkDownload.click();
             document.body.removeChild(linkDownload);
@@ -754,9 +887,16 @@ VALOR TOTAL DA RESERVA: R$ ${total},00
             // Executa a geração do documento de texto para o proprietário
             gerouArquivoDono(nomeInput, emailInput, telefoneInput, dataInput, horarioInput, gasStatus, limpezaStatus, formaPgto, valorFinalGlobal);
 
+            // Formata a exibição de sucesso para formato DD/MM/YYYY
+            let dataSucesso = dataInput;
+            if (dataInput.includes('-')) {
+                const partes = dataInput.split('-');
+                dataSucesso = `${partes[2]}/${partes[1]}/${partes[0]}`;
+            }
+
             // Passar dados informativos para a tela final de sucesso
             document.getElementById('sucesso-nome').innerText = nomeInput;
-            document.getElementById('sucesso-data').innerText = dataInput;
+            document.getElementById('sucesso-data').innerText = dataSucesso;
             document.getElementById('sucesso-horario').innerText = horarioInput;
 
             document.getElementById('tela-pagamento').classList.add('hidden');
@@ -768,6 +908,8 @@ VALOR TOTAL DA RESERVA: R$ ${total},00
             document.getElementById('form-reserva').reset();
             document.getElementById('chk-regras').checked = false;
             document.getElementById('btn-prosseguir-1').disabled = true;
+            document.getElementById('data-alerta').style.display = "none";
+            document.getElementById('btn-prosseguir-cadastro').disabled = false;
             calcularTotal();
             
             document.getElementById('tela-sucesso').classList.add('hidden');
